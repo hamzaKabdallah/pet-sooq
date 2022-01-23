@@ -1,0 +1,15 @@
+<ion-header>
+  <ion-toolbar>
+  <ion-title> {{ title | translate}}</ion-title>
+    <ion-buttons *ngIf="withLang" slot="end">
+      <ion-button>
+        <ion-item>
+          <ion-select (ionChange)="onTranslateChange($event)" [value]="languageUsed" multiple="false" interface="popover" [placeholder]="languageUsed">
+          <ion-select-option *ngFor="let lang of supportedLanguage" [value]="lang">{{ lang }}</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <!-- <ion-icon  slot="icon-only" name="person-circle"></ion-icon> -->
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>

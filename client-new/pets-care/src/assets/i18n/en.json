@@ -1,0 +1,26 @@
+{
+    "LOGIN": {
+        "TITLE": "Login",
+        "ERRORS": {
+            "EMAIL": {
+                "REQUIRED": "you must enter an email",
+                "EMAIL": "you must enter valid email"
+            },
+            "PASSWORD": {
+                "REQUIRED": "you must enter an Password",
+                "MIN": "password must have 6 digit or more"
+            }
+        }
+    },
+    "REGISTER": {
+        "TITLE": "Register"
+    },
+    "PROFILE":{
+        "Title": "Profile"
+    },
+    "SHARED": {
+        "EMAIL": "Email",
+        "USERNAME": "Username",
+        "PASSWORD": "Password"
+    }
+}
