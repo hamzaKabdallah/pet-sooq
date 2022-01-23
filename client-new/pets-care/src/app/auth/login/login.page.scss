@@ -1,0 +1,43 @@
+div {
+    height: 100%;
+    display: flex;
+    align-items: center;
+  
+    ion-grid {
+      height: 67%;
+  
+      ion-row {
+        height: max-content;
+  
+        form {
+          padding: 10%;
+          box-shadow: 2px 2px 14px 0px rgba(174,86,86,0.75);
+  
+          ion-list {
+  
+              ion-item {
+                  .title {
+                      text-align: center;
+                      font-size: x-large;
+                  }
+  
+                  small {
+                      margin: 6px auto;
+                      color: red;
+                  }
+              }
+          }
+  
+          ion-input {
+            border-bottom: solid 0.1px;
+          }
+        }
+      }
+    }
+  }
+  
+  .login-button {
+    width: 60%;
+    margin: 14px auto;
+  }
+  

@@ -1,0 +1,39 @@
+
+<app-header [withLangButton]="true" [title]="'REGISTER.TITLE'"></app-header>
+<ion-content>
+  <div>
+    <ion-grid>
+      <ion-row>
+        <ion-col margin ion-padding size-lg="6" offset-lg="3" size-md="6" offset-md="3" offset-sm="2" size-sm="8"  offset-xs="2" size-xs="8">
+          <form [formGroup]="form" (submit)="onSubmit()">
+              <ion-list lines="none" margin>
+                <ion-item >
+                  <ion-label class="title"> {{ 'LOGIN.TITLE' | translate }} </ion-label> 
+              </ion-item>
+
+              <ion-item>
+                <ion-label position="floating">{{ 'SHARED.EMAIL' | translate }}</ion-label>
+                <ion-input formControlName="email" type="text"></ion-input>
+
+              <small *ngIf="formControls.email?.errors?.required && submitted">{{ 'LOGIN.ERRORS.EMAIL.REQUIRED' | translate}}</small>
+                <small *ngIf="formControls.email?.errors?.email && submitted">{{ 'LOGIN.ERRORS.EMAIL.EMAIL' | translate}}</small>
+
+              </ion-item>
+            
+              <ion-item>
+                <ion-label position="floating">{{ 'SHARED.PASSWORD' | translate }}</ion-label>
+                <ion-input formControlName="password" type="password"></ion-input>
+                
+                <small *ngIf="formControls.password?.errors?.required && submitted">{{ 'LOGIN.ERRORS.PASSWORD.REQUIRED' | translate}}</small>
+                <small *ngIf="formControls.password?.errors?.minlength && submitted">{{ 'LOGIN.ERRORS.PASSWORD.MIN' | translate}}</small>
+              </ion-item>
+            
+            </ion-list>
+       
+          <ion-button type="submit" class="login-button" expand="block" fill="outline">{{ "LOGIN.TITLE" | translate }}</ion-button>
+          </form>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>
