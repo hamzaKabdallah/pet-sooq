@@ -4,6 +4,7 @@ import { Languages } from 'src/enums/lang.enum';
 import { StorageService } from '../../services/storage.service';
 import { config } from '../../config';
 import { SelectCustomEvent } from '@ionic/core';
+import { DirectionService } from '../../services/direction.service';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -18,35 +19,38 @@ export class HeaderComponent implements OnInit {
 
 
   constructor(private translateService: TranslateService,
-    private storageService: StorageService
-    )
-  {
+    private storageService: StorageService,
+    private directionService: DirectionService
+  ) {
     this.init();
   }
 
-  
+
   async init() {
-    this.storageService.getString('lang').then((data) =>{
+    this.storageService.getString('lang').then((data) => {
       data.value ? this.languageUsed = data.value : this.languageUsed = Languages.AR;
       this.setTranslate(this.languageUsed);
-    });
+    }).catch(console.log);
   }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   setTranslate(lang: Languages): void {
     this.languageUsed = lang;
-    this.translateService.use(lang);
-    this.storageService.setString('lang', lang);
+    this.storageService.setString('lang', lang)
+      .then(() => {
+        console.log(lang);
+        this.translateService.use(lang);
+        this.directionService.setDir(lang);
+      }).catch(console.log);
   }
 
   onTranslateChange(event: SelectCustomEvent) {
     this.setTranslate(event.target.value);
-    console.log(event.target.value);
     let lang = event.target.value;
     if (lang === this.languageUsed) {
-        return
-    } 
+      return
+    }
     lang === Languages.AR ? this.setTranslate(Languages.EN) : this.setTranslate(Languages.AR);
   }
 }
